@@ -22,6 +22,7 @@ public class Main {
 		int diceSides = dieSides(); // Get the number of sides on the die.
 		int rollsSimulated = toSimulate(); // Get the number of rolls to simulate.
 		int[] combos; // Declare the array for the number of combinations
+		int totalSimulations = 0; // Declare the variable used to count the simulations.
 		int maxComboLimit; // Declare the maximum amount of combinations available
 
 		// Instantiate the Randomizer
@@ -39,12 +40,18 @@ public class Main {
 		}
 
 		// Print out the information header.
-		System.out.printf( "%s%10s\n", "Number Shown", "Frequency" );
+		System.out.printf( "%s%12s\n", "Number Shown", "Frequency" );
+		System.out.println( "------------------------" );
 
 		// Print out the data.
 		for ( int numberShown = diceQuantity; numberShown < combos.length; numberShown++ ) {
-			System.out.printf( "%12d%10d\n", numberShown, combos[ numberShown ] );
+			System.out.printf( "%2d%22d\n", numberShown, combos[ numberShown ] );
+
+			totalSimulations += combos[ numberShown ]; // Adds all of the frequencies together.
 		}
+
+		System.out.println( "------------------------" );
+		System.out.printf( "Sum of frequencies: %d", totalSimulations );
 	}
 
 	/*
