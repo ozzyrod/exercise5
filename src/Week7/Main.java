@@ -6,12 +6,9 @@
 package Week7;
 
 /*
- * Import the Random java package.
+ * Import necessary java packages.
  */
 import java.util.Random;
-/*
- * Import the Scanner java package.
- */
 import java.util.Scanner;
 
 /**
