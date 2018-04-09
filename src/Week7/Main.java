@@ -25,9 +25,6 @@ public class Main {
 		int totalSimulations = 0; // Declare the variable used to count the simulations.
 		int maxComboLimit; // Declare the maximum amount of combinations available
 
-		// Instantiate the Randomizer
-		Random randomNumbers = new Random();
-
 		// Assign the quantity of combinations to max.
 		maxComboLimit = diceQuantity * diceSides;
 
@@ -36,11 +33,11 @@ public class Main {
 
 		// Simulate the rolls and add the data to the array.
 		for ( int roll = 1; roll <= rollsSimulated; roll++ ) {
-			++combos[ randomNumbers.nextInt( maxComboLimit + 1 - diceQuantity ) + diceQuantity ];
+			++combos[ dieTotalRoll( diceQuantity, diceSides ) ];
 		}
 
 		// Print out the information header.
-		System.out.printf( "%s%12s\n", "Number Shown", "Frequency" );
+		System.out.printf( "%s%12s\n", "Number Rolled", "Frequency" );
 		System.out.println( "------------------------" );
 
 		// Print out the data.
@@ -55,10 +52,30 @@ public class Main {
 	}
 
 	/*
+	 * Simulates the individual rolls and returns them.
+	 * @param  int dieQuantity The number of die being simulated.
+	 * @param  int dieSides The number of sides each die has.
+	 * @return int Quantity of die
+	 */
+	public static int dieTotalRoll( int dieQuantity, int dieSides ) {
+
+		// Instantiate the Randomizer
+		Random randomNumbers = new Random();
+
+		int totalRoll = 0;
+
+		for ( int die = 1; die <= dieQuantity; die++ ) {
+			totalRoll += randomNumbers.nextInt( dieSides ) + 1;
+		}
+
+		return totalRoll;
+	}
+
+	/*
 	 * Asks the user for the number of die to simulate.
 	 * @return int Quantity of die
 	 */
-	public static int dieQuantity () {
+	public static int dieQuantity() {
 
 		// Instantiate the Scanner
 		Scanner input = new Scanner( System.in );
